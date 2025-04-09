@@ -1,0 +1,40 @@
+## COM AMBIENTE UV - nao FUNCIONOU
+
+uv init
+uv venv
+uv add scrapy
+uv run scrapy startproject coleta
+uv run scrapy genspider notebook https://lista.mercadolivre.com.br/notebook#D
+https://lista.mercadolivre.com.br/notebook?sb=rb#D[A:notebook]
+
+scrapy shell
+fetch("https://lista.mercadolivre.com.br/notebook#D") # vai gerar um erro 403
+
+My user agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+
+## FUNCIONOU
+
+python -m venv .venv
+.venv/scripts/activate
+
+pip install scrapy
+scrapy startproject coleta
+scrapy genspider notebook https://lista.mercadolivre.com.br/notebook?sb=rb#D[A:notebook]
+
+scrapy shell
+
+My user agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+
+# settings.py
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+ROBOTSTXT_OBEY = False
+
+scrapy crawl notebook -o ../data/data.json
+
+rodar main.py em transformLoad
+rodar app streamlit
+
+Github
+https://github.com/lvgalvao/WebScraping-2025-Jornada-Aovivo/tree/b8bded70482b18d94a913f10406690b80adac895
